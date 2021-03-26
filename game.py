@@ -3,7 +3,6 @@ import pandas as pd
 from random import shuffle
 import login
 
-
 def welcome():
     status = False
     print("*" * 30)
