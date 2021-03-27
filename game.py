@@ -4,7 +4,6 @@ from random import shuffle
 import login
 
 def welcome():
-    status = False
     print("*" * 30)
     print("Quiz Game".center(30, "*"))
     print("*" * 30)
@@ -15,7 +14,7 @@ def welcome():
     print("*" * 30)
     n = int(input("Enter a number >>"))
     if n == 1:
-        players = ['Simeon','Fitzroy'] #login.login()
+        players = login.login()
     if n == 2:
         login.register()
         welcome()
@@ -56,9 +55,11 @@ def game(username1, username2):
         print(p1card.name, p2card.name)
         outcomes = ["tie", f"{username1} wins", f"{username2} wins"]
         if p1card.colour == p2card.colour:
+            # (p1card.number > p2card.number) is a Boolean, returns 1 or 0
             winning_player = 2 - (p1card.number > p2card.number)
         else: 
             colours = ["red", "yellow", "black"]
+            # implementation of the "rock paper scissors" type logic for the winning colour
             winning_player = (colours.index(p1card.colour) - colours.index(p2card.colour))%3
         print(outcomes[winning_player])
         if winning_player == 1:
